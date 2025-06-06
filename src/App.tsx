@@ -1,8 +1,9 @@
 import { type FC, useState } from 'react';
+
 import reactLogo from './assets/react.svg';
 import './App.css';
 
-const title = import.meta.env['VITE_APP_TITLE'] as string;
+const title = import.meta.env['VITE_APP_TITLE'];
 // console.dir(import.meta.env);
 
 const App: FC = () => {

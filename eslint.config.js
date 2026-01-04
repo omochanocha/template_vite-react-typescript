@@ -10,6 +10,7 @@ import pluginSimpleImportSort from 'eslint-plugin-simple-import-sort';
 import pluginUnusedImports from 'eslint-plugin-unused-imports';
 import pluginJest from 'eslint-plugin-jest';
 import pluginStylistic from '@stylistic/eslint-plugin';
+import configPrettier from 'eslint-config-prettier';
 import { defineConfig } from 'eslint/config';
 
 const reactConfig = {
@@ -40,6 +41,11 @@ const reactConfig = {
 const typeConfig = {
   name: 'Type Config',
   files: ['{src,app,pages}/**/*.{ts,tsx}'],
+  languageOptions: {
+    parserOptions: {
+      project: ['tsconfig.json', 'tsconfig.*.json'],
+    },
+  },
   plugins: {
     'typescript-eslint': tsEsLint,
   },
@@ -48,6 +54,7 @@ const typeConfig = {
       'warn',
       { prefer: 'type-imports' },
     ],
+    '@typescript-eslint/strict-boolean-expressions': 'error',
   },
 };
 
@@ -180,8 +187,8 @@ export default defineConfig([
   tsEsLint.configs.stylistic,
   reactConfig,
   typeConfig,
-  typeConfig,
   importConfig,
   stylisticConfig,
   testConfig,
+  configPrettier,
 ]);
